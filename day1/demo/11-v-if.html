@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="点击" @click="change">
+        <p>
+            <input type="text" v-model="msg">
+            <span v-if="msg.length<12&&r.show">弱</span>
+            <span v-else-if="msg.length<18&&z.show">中</span>
+            <span v-else>强</span>
+
+        </p>
+
+
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "",
+                q: {
+                    show: true,
+                    data: "我很强"
+                },
+                z: {
+                    show: true,
+                    data: "我还行"
+                },
+                r: {
+                    show: true,
+                    data: "我很弱"
+                }
+            },
+            methods: {
+                change() {
+                    flag += 5;
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

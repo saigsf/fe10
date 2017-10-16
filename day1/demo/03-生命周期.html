@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-cloak>
+            <button id="btn">点我</button>
+            <input type="button" value="点击" v-on:click="change"> {{name }}
+            <input type="button" value="销毁" v-on:click="destroy">
+        </div>
+
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script> -->
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                name: "实例"
+            },
+            beforeCreate: function() {
+                alert("实力创建前")
+            },
+            created: function() {
+                alert("实力创建完成")
+            },
+            beforeMount() {
+                alert("实力挂载钱")
+            },
+            mounted() {
+                alert("实力挂载完成")
+                $("#btn").click(function() {
+                    alert("我在哪用才合适呢")
+                })
+            },
+            beforeUpdate() {
+                alert("实力更新钱")
+            },
+            updated() {
+                alert("实例更新完成")
+            },
+            beforeDestroy() {
+                alert("实例死亡前")
+            },
+            destroyed() {
+                alert("实例已经死亡")
+            },
+            methods: {
+                change: function() {
+                    this.name = "methods"
+                },
+                destroy: function() {
+                    app.$destroy()
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>
+
+<body>
+
+</body>
+
+</html>

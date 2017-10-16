@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{name}}
+        <p v-html="tpl"> </p>
+        <p v-text="tpl"></p>
+        <p>
+            <span v-if="seem">你好</span>
+        </p>
+        <ol>
+            <li v-for="item in items">
+                {{ item.text }}
+            </li>
+        </ol>
+        <p>
+            <input type="button" v-on:click="handle(" ok ",$event)" value="倒叙">
+        </p>
+        <p>
+            <input v-show="seem" type="text" v-model="name">
+        </p>
+
+    </div>
+    <!-- <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script> -->
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                name: "saigsf",
+                age: 18,
+                seem: false,
+
+                items: [{
+                    text: '学习 JavaScript'
+                }, {
+                    text: '学习 Vue'
+                }, {
+                    text: '整个牛项目'
+                }],
+                tpl: "<h1>saigsf</h1>"
+            },
+            methods: {
+                handle: function() {
+                    console.log(arguments)
+                    this.name = this.name.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

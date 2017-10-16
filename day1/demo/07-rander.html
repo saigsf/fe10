@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <span id="box"></span>
+        <div v-show="msg" style="width: 100px;height:100px;background:red"></div>
+    </div>
+
+
+    <script type="x-template" id="temp">
+        <input type="button" value="点击" @click="change">
+    </script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: true,
+                html: '<input type="button" value="点击" @click="change">'
+            },
+            render(createElement) {
+                return createElement(
+                    "ul"
+                )
+
+            }
+        })
+    </script>
+</body>
+
+</html>

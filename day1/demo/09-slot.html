@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <saigsf>你好</saigsf>
+
+
+    </div>
+    <template id="saigsf">
+            <div>
+                <h1>saigsf</h1>
+                <slot></slot>    
+            </div>
+        </template>
+
+    <script type="x-template" id="temp">
+        <input type="button" value="点击" @click="change">
+    </script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: true,
+            },
+            components: {
+                "saigsf": {
+                    template: '#saigsf'
+                }
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

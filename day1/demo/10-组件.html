@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity .5s
+        }
+        
+        .fade-enter,
+        .fade-leave-to
+        /* .fade-leave-active in below version 2.1.8 */
+        
+        {
+            opacity: 0
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="change">点击切换组件</button>
+        <!-- 动态组件 -->
+        <transition name="fade" mode="out-in" appear>
+            <component :is="currentView"></component>
+        </transition>
+        <!-- 基本 -->
+        <keep-alive>
+            <component :is="currentView"></component>
+        </keep-alive>
+        <!-- 和 `<transition>` 一起使用 -->
+        <transition>
+            <keep-alive>
+                <component :is="currentView"></component>
+            </keep-alive>
+        </transition>
+
+    </div>
+    <template id="temp">
+            <div>
+                <h1>{{msg}}</h1>
+                <ol>
+                    <li v-for="item in items"  >{{item.title}} </li>
+                </ol>
+                <slot></slot>    
+            </div>
+        </template>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                currentView: 'saigsf'
+            },
+            components: {
+                "saigsf": {
+                    data() {
+                        return {
+                            msg: "saigsf"
+                        }
+                    },
+                    methods: {
+
+                    },
+                    template: "#temp"
+                },
+                "app-user": {
+                    data() {
+                        return {
+                            msg: "app-user",
+                            items: [{
+                                title: "第一个",
+                                isShow: true
+                            }, {
+                                title: "第二个",
+                                isShow: true
+                            }, {
+                                title: "第三个",
+                                isShow: false
+                            }]
+                        }
+                    },
+                    methods: {
+
+                    },
+                    template: "#temp"
+                }
+            },
+            methods: {
+                change: function() {
+                    this.currentView = 'app-user'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
