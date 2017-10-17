@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.css" rel="stylesheet">
+    <script src="vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        {{a}} {{b}} {{c.name}}
+
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                a: 1,
+                b: 2,
+                c: {
+                    name: "gsf",
+                    id: 123
+                }
+            },
+            watch: {
+                a: function(val, oldVal) {
+                    console.log("a发生了变化");
+                    this.c.name = '都是a的错'
+                }
+            }
+
+        })
+
+        vm.$watch("b", function() {
+            this.a = this.b + 100;
+            console.log("b发生了变化导致a变为" + this.a)
+        })
+        vm.$watch("c", function() {
+            console.log("a发生了变化导致c变为" + this.c.name)
+        }, {
+            deep: true
+        })
+        document.onclick = function() {
+            vm.b = 111;
+        }
+    </script>
+
+</body>
+
+</html>
