@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #app div {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+        }
+        
+        .hello {
+            top: 0;
+            left: 0;
+            background-color: red;
+        }
+        
+        .word {
+            top: 0;
+            right: 0;
+            background-color: blue;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="hello" v-drag></div>
+        <div class="word" v-drag></div>
+    </div>
+    <script>
+        Vue.directive("drag", {
+            bind: function(el) {
+                console.log(el)
+                let X = 0;
+                let Y = 0;
+                let newX = 0;
+                let newY = 0;
+
+                // 原生
+                el.onmousedown = function(event) {
+                    event.preventDefault();
+                    console.log(newX, newY)
+                    X = event.clientX + newX - this.offsetLeft;
+                    Y = event.clientY + newY - this.offsetTop;
+                    this.style.top = Y + "px"
+                    this.style.left = X + "px"
+                    document.onmousemove = function(event) {
+                        event.preventDefault();
+                        newX = event.clientX - X;
+                        newY = event.clientY - Y;
+                        el.style.top = newY + "px"
+                        el.style.left = newX + "px"
+
+                    }
+                    document.onmouseup = function(event) {
+                        event.preventDefault();
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+
+                    }
+
+                }
+
+
+
+
+                // jquery版本
+                // $(el).mousedown(function(event) {
+                //     event.preventDefault();
+                //     console.log(event)
+                // })
+                // $(el).mousemove(function(event) {
+                //     event.preventDefault();
+
+                // })
+                // $(el).mouseup(function(event) {
+                //     event.preventDefault();
+                // })
+            }
+        });
+
+
+
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "nihao"
+            }
+        })
+    </script>
+</body>
+
+</html>

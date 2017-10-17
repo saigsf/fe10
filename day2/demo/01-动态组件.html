@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <button @click="change">d点击切换</button>
+        <component :is="msg"></component>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "login"
+            },
+            components: {
+                'home': {
+                    template: "<h1>我是home组件</h1>"
+                },
+                'login': {
+                    template: "<h1>我是login组件</h1>"
+                },
+                'register': {
+                    template: "<h1>我是register组件</h1>"
+                }
+            },
+            methods: {
+                change() {
+                    this.msg = 'home'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

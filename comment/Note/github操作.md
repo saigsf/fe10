@@ -22,5 +22,10 @@ password gsf137950fdggn1
 
 ##创建并且换到分支
     git checkout -b name
+
+##创建分支
+    git branch name #name:分支名字 ，创建分支
+    git branch #不加名字就是把分支列出来
+    git checkout name #切换分支
 ##查看命令帮助
     git -help 
