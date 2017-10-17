@@ -1,3 +1,4 @@
+```
 echo "# fe10" >> README.md
 
 git init #初始化
@@ -17,3 +18,9 @@ git push -u origin master
 username saigsf
 
 password gsf137950fdggn1
+```
+
+##创建并且换到分支
+    git checkout -b name
+##查看命令帮助
+    git -help 
