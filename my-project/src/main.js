@@ -3,13 +3,14 @@
 import Vue from 'vue'
 // 导入组件
 import App from './App'
-import Home from './components/home'
-import Navbar from './components/navbar'
 import router from './router'
+// import routes from './routes'
 import $ from 'jquery'
 import '_bootstrap@3.3.7@bootstrap/dist/js/bootstrap.min.js'
 import '_bootstrap@3.3.7@bootstrap/dist/css/bootstrap.min.css'
-
+import './assets/css/font-awesome.css'
+import axios from 'axios'
+Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false
 
@@ -20,12 +21,5 @@ new Vue({
     template: '<App/>',
     components: {
         App
-    }
-})
-new Vue({
-    el: '#app',
-    template: '<Home/>',
-    components: {
-        Home
     }
 })
