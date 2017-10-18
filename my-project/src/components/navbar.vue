@@ -1,7 +1,8 @@
 <template>
-  <div class="container" >
-      
-<nav class="navbar navbar-default">
+  <div class="container">
+
+    
+    <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -17,15 +18,20 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li >
+          <router-link to="/">首页</router-link>
+        </li>
+        
+        <li><router-link to="/users">用户</router-link></li>
         
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">登录</a></li>
+        <li>
+          <router-link to="/login">登录</router-link>
+        </li>
         <li class="dropdown">
-          <a href="#" >注册 </a>
+          <router-link to="/register">注册</router-link>
         </li>
       </ul>
       <form class="navbar-form navbar-right">
@@ -38,7 +44,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-  </div>
+</div>
 </template>
 <script>
     export default {
