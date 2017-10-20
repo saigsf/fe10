@@ -35,9 +35,9 @@
               </ul>
               <form class="navbar-form navbar-right">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search">
+                  <input type="text" class="form-control" placeholder="Search" @keyup="search()" >
                 </div>
-                <button type="button" class="btn btn-default">Search</button>
+                <button type="button" class="btn btn-default" >Search</button>
               </form>
               
             </div><!-- /.navbar-collapse -->
@@ -61,11 +61,22 @@
         },
         created () {
             this.hello()
+            this.search()
         },
         methods:{
             hello: function () {
                 console.log('hello from mixin!')
-            }
+            },
+            search:function(){
+                    this.$axios.get('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+                        params:{
+                            wd:"王者荣耀"
+                        },
+                        jsonp:"cb"
+                    }).then(res => {
+                        console.log(res)
+                    })
+                },
         }
     }
 </script>

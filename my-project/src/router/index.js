@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import Router from 'vue-router'
 
 import HelloWorld from '@/components/HelloWorld';
@@ -9,6 +10,8 @@ import Register from '@/components/register'
 import Users from '@/components/users'
 import NotFound from '@/components/notFound'
 import UserDetall from '@/components/user-detall'
+import Test from '@/components/test'
+import Test1 from '@/views/user/index'
 
 Vue.use(Router)
 
@@ -49,6 +52,14 @@ export default new Router({
             }
         }]
 
+    }, {
+        path: '/test',
+        name: 'Test',
+        component: Test
+    }, {
+        path: '/test1',
+        name: 'Test1',
+        component: Test1
     }, {
         path: '*',
         component: NotFound

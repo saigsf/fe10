@@ -31,23 +31,11 @@
   </div>
 </template>
 <script>
-    let data =[{
-        id:1,
-        name:"gsf",
-        sex:"man"
-    },{
-        id:2,
-        name:"lc",
-        sex:"man"
-    },{
-        id:3,
-        name:"qy",
-        sex:"man"
-    }];
     export default {
         name: 'Users',
         created () {
             this.getGoods();
+            this.getHero();
         },
         data () {
             return {
@@ -60,7 +48,14 @@
                     .then(res => {
                         this.usersInfo=res.data;
                     })
+            },
+            getHero(){
+                this.$axios.get('/v1/db.php')
+                    .then(res => {
+                        console.log(res)
+                    })
             }
+
         }
         
     }

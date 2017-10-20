@@ -1,5 +1,4 @@
 <template>
-  <div id="app">
     
     <div class="container">
         <router-view />
@@ -8,25 +7,9 @@
         <h1>Email: {{userInfo.email}}</h1>
         
     </div>
-    
-    
-  </div>
 </template>
 
 <script>
-let data =[{
-        id:1,
-        name:"gsf",
-        sex:"man"
-    },{
-        id:2,
-        name:"lc",
-        sex:"man"
-    },{
-        id:3,
-        name:"qy",
-        sex:"man"
-    }];
 export default {
 
     name: 'UserDetall',
